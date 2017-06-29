@@ -13,8 +13,7 @@ vue2.0 vuex node
 
 ![二维码](http://qr.api.cli.im/qr?data=http%253A%252F%252F47.92.26.198%253A9000%252F&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=f349d2cedbecf0b7655323193ed801b2)
 
-## 知识结构
-![vue-sell](https://static.galileo.xiaojukeji.com/static/tms/shield/Vue.js_music_xmind.png)
+
 
 ## 项目树
 ```

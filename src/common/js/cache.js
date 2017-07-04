@@ -15,10 +15,12 @@ function insertArray(arr, val, compare, maxLen) {
     return
   }
   if (index > 0) {
+    // 如果查找到数据就删除并且重新保存
     arr.splice(index, 1)
   }
   arr.unshift(val)
   if (maxLen && arr.length > maxLen) {
+    // 大于我们设置的数据则删除最后一个数据
     arr.pop()
   }
 }
@@ -32,9 +34,11 @@ function deleteFromArray(arr, compare) {
 
 export function saveSearch(query) {
   let searches = storage.get(SEARCH_KEY, [])
+  console.log(searches)
   insertArray(searches, query, (item) => {
     return item === query
   }, SEARCH_MAX_LEN)
+  console.log(searches)
   storage.set(SEARCH_KEY, searches)
   return searches
 }

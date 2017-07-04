@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
   import {addClass} from 'common/js/dom'
   import BScroll from 'better-scroll'
 

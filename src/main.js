@@ -11,6 +11,7 @@ import 'common/stylus/index.styl'
 /* eslint-disable no-unused-vars */
 // import vConsole from 'vconsole'
 
+// 解决移动端300毫秒的延迟
 fastclick.attach(document.body)
 
 Vue.use(VueLazyload, {

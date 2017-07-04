@@ -33,7 +33,7 @@
   </scroll>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
   import Scroll from 'base/scroll/scroll'
   import Loading from 'base/loading/loading'
   import {getData} from 'common/js/dom'
@@ -55,6 +55,7 @@
         })
       },
       fixedTitle() {
+        // 固定title实现
         if (this.scrollY > 0) {
           return ''
         }
@@ -79,19 +80,22 @@
         this.$emit('select', item)
       },
       onShortcutTouchStart(e) {
+        // 获取点击元素的索引
         let anchorIndex = getData(e.target, 'index')
+        console.log(anchorIndex)
         let firstTouch = e.touches[0]
+        // 获取手指的位置
         this.touch.y1 = firstTouch.pageY
+        // 手指触摸开始的索引
         this.touch.anchorIndex = anchorIndex
-
         this._scrollTo(anchorIndex)
       },
       onShortcutTouchMove(e) {
         let firstTouch = e.touches[0]
         this.touch.y2 = firstTouch.pageY
+        // y轴偏移量
         let delta = (this.touch.y2 - this.touch.y1) / ANCHOR_HEIGHT | 0
         let anchorIndex = parseInt(this.touch.anchorIndex) + delta
-
         this._scrollTo(anchorIndex)
       },
       refresh() {
@@ -110,6 +114,7 @@
           height += item.clientHeight
           this.listHeight.push(height)
         }
+        // 计算每一个listGroup的高度
       },
       _scrollTo(index) {
         if (!index && index !== 0) {
@@ -121,6 +126,7 @@
           index = this.listHeight.length - 2
         }
         this.scrollY = -this.listHeight[index]
+        // 根据索引对应滚动到相应的位置，实现左右联动效果
         this.$refs.listview.scrollToElement(this.$refs.listGroup[index], 0)
       }
     },

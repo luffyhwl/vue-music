@@ -4,9 +4,8 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
   import BScroll from 'better-scroll'
-
   export default {
     props: {
       probeType: {
@@ -56,6 +55,7 @@
         if (this.listenScroll) {
           let me = this
           this.scroll.on('scroll', (pos) => {
+            // 监听滚动，派发滚动事件，拿到位置
             me.$emit('scroll', pos)
           })
         }
@@ -80,12 +80,14 @@
       enable() {
         this.scroll && this.scroll.enable()
       },
+      // 刷新高度，重新计算
       refresh() {
         this.scroll && this.scroll.refresh()
       },
       scrollTo() {
         this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
       },
+      // 使用apply，因为需要接受参数
       scrollToElement() {
         this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
       }

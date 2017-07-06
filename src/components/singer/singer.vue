@@ -33,9 +33,11 @@
         this.$refs.list.refresh()
       },
       selectSinger(singer) {
+        // console.log(singer)
         this.$router.push({
           path: `/singer/${singer.id}`
         })
+        // 提交mutation
         this.setSinger(singer)
       },
       _getSingerList() {

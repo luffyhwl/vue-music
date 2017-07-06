@@ -58,6 +58,6 @@ npm run build 项目打包
 
 ## 谢谢同学们支持
 
-你们的支持是我坚持下去的动力
+累计已经收到两个同学的打赏共10块钱
 
 ![image](https://github.com/songhaoreact/vue-music/blob/master/static/weixin.png)

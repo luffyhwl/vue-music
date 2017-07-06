@@ -11,6 +11,7 @@
 </template>
 
 <script>
+  
   import {addClass} from 'common/js/dom'
   import BScroll from 'better-scroll'
 
@@ -36,17 +37,20 @@
         currentPageIndex: 0
       }
     },
+    route: {
+      data() {
+        console.log(123)
+      }
+    },
     mounted() {
       setTimeout(() => {
         this._setSliderWidth()
         this._initDots()
         this._initSlider()
-
         if (this.autoPlay) {
           this._play()
         }
       }, 20)
-
       window.addEventListener('resize', () => {
         if (!this.slider) {
           return
@@ -74,11 +78,13 @@
         let sliderWidth = this.$refs.slider.clientWidth
         for (let i = 0; i < this.children.length; i++) {
           let child = this.children[i]
+          // 给每一个slider-item添加class
           addClass(child, 'slider-item')
 
           child.style.width = sliderWidth + 'px'
           width += sliderWidth
         }
+        // 做到无缝滚动
         if (this.loop && !isResize) {
           width += 2 * sliderWidth
         }
@@ -96,7 +102,9 @@
         })
 
         this.slider.on('scrollEnd', () => {
+          // 滚动结束时获取当前页的横向索引
           let pageIndex = this.slider.getCurrentPage().pageX
+          // better-scroll会在循环的时候copy一个，所以这里减一
           if (this.loop) {
             pageIndex -= 1
           }
@@ -116,6 +124,7 @@
       _initDots() {
         this.dots = new Array(this.children.length)
       },
+      // 自动播放滚动
       _play() {
         let pageIndex = this.currentPageIndex + 1
         if (this.loop) {

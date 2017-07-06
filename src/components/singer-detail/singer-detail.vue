@@ -4,7 +4,7 @@
   </transition>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
   import MusicList from 'components/music-list/music-list'
   import {getSingerDetail} from 'api/singer'
   import {ERR_OK} from 'api/config'
@@ -19,6 +19,7 @@
       bgImage() {
         return this.singer.avatar
       },
+      // 取出store getters里面的singer
       ...mapGetters([
         'singer'
       ])

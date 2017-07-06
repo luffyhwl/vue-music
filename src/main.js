@@ -17,7 +17,9 @@ fastclick.attach(document.body)
 Vue.use(VueLazyload, {
   loading: require('common/image/default.png')
 })
-
+Vue.prototype.setTitle = function (msg) {
+  console.log(msg)
+}
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
